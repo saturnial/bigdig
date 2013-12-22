@@ -4,8 +4,7 @@
 
 angular.module('myApp.controllers', []).
 
-  controller('MyCtrl1', ['$scope', function($scope) {
-  	$scope.testVariable = 'hello there';
+  controller('AddProjectCtrl', ['$scope', function($scope) {
 
   	$scope.projects = [
   		{title: 'Bike lane', description: 'Widen bike lane'}
@@ -23,7 +22,8 @@ angular.module('myApp.controllers', []).
   	};
   }])
 
-  .controller('MyCtrl2', ['$scope', function($scope) {
-	$scope.testVariable2 = 'hello there'; 
+  .controller('ViewProjectsCtrl', ['$scope', function($scope) {
+
+    $http.get('/projects').success();
 
   }]);
