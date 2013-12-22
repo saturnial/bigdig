@@ -1,12 +1,13 @@
 from django.conf.urls import patterns, include, url
+from rest_framework import routers
+from kickstart import views
 
 from django.contrib import admin
 admin.autodiscover()
 
-urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'digserver.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
+router = routers.DefaultRouter()
+router.register(r'projects', views.ProjectViewSet)
 
-    url(r'^admin/', include(admin.site.urls)),
-)
+urlpatterns = patterns('',
+    url(r'^', include(router.urls)),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')))
