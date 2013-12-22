@@ -9,6 +9,5 @@ router = routers.DefaultRouter()
 router.register(r'projects', views.ProjectViewSet)
 
 urlpatterns = patterns('',
-    url(r'^', include('client.urls')),
-    url(r'^api/', include(router.urls)),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')))
+    url(r'^', 'client.views.home', name='home'),
+)
