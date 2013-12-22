@@ -36,7 +36,13 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'kickstart',
+    'rest_framework',
 )
+
+#REST_FRAMEWORK = {
+#  'DEFAULT
+#}
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -58,7 +64,7 @@ WSGI_APPLICATION = 'digserver.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join('db.sqlite3'),
     }
 }
 
