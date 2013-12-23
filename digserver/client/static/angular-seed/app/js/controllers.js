@@ -4,11 +4,9 @@
 
 angular.module('myApp.controllers', []).
 
-  controller('AddProjectCtrl', ['$scope', function($scope) {
+  controller('AddProjectCtrl', ['$scope', '$location', 'ProjectData', function($scope, $location, ProjectData) {
 
-  	$scope.projects = [
-  		{title: 'Bike lane', description: 'Widen bike lane'}
-  	];
+    $scope.projects = ProjectData;
 
   	$scope.addProject = function() {
   		// $http.post('/project', project).success(
@@ -19,11 +17,13 @@ angular.module('myApp.controllers', []).
   		// );
   		$scope.title = '';
   		$scope.description = '';
-  	};
+      $location.path("/");
+  	};    
   }])
 
-  .controller('ViewProjectsCtrl', ['$scope', function($scope) {
+  .controller('ViewProjectsCtrl', ['$scope', 'ProjectData', function($scope, ProjectData) {
 
-    $http.get('/projects').success();
+    // $http.get('/projects').success();
+    $scope.projects = ProjectData;
 
   }]);
