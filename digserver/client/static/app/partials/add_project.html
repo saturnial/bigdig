@@ -1,14 +1,19 @@
 <h2>Add project</h1>
 
 <form ng-submit="addProject()">
-
-	<div>Title:</div>
-	<div>
-		<input type="text" ng-model="title"/>	
-	</div>
-	<div>Description</title>	
-	<div>		
-		<textarea ng-model="description"></textarea>		
-	</div>
-	<div><input type="submit" /></div>
+  <div>Title</div>
+  <div>
+    <input type="text" required ng-model="title"/>  
+  </div>
+  <div>Description</title>
+  <div>
+    <textarea cols="100" rows="10" required ng-model="description"></textarea>
+  </div>
+  <div>Funding Goal</div>
+  <div>
+    <input type="text" required ng-model="funding_goal"/> 
+  </div>
+  <div>
+    <input type="submit" />
+  </div>
 </form>

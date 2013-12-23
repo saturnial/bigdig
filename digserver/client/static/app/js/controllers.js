@@ -7,12 +7,14 @@ angular.module('bigdig.controllers', [])
   .controller('AddProjectCtrl', ['$scope', '$http', '$location', 'ProjectData', function($scope, $http, $location, ProjectData) {
 
     $scope.addProject = function() {
-      if (!$scope.title || !$scope.description) {
+      if (!$scope.title || !$scope.description || !$scope.funding_goal) {
         return;
       }
+
       var newProject = {title: $scope.title,
                         description: $scope.description,
-                        amount_raised: 200}
+                        funding_goal: $scope.funding_goal}
+
       $http({
           url: '/api/projects/',
           method: "POST",
