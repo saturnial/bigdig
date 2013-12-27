@@ -10,11 +10,9 @@ angular.module('bigdig.controllers', [])
       if (!$scope.title || !$scope.description || !$scope.funding_goal) {
         return;
       }
-
       var newProject = {title: $scope.title,
                         description: $scope.description,
                         funding_goal: $scope.funding_goal}
-
       $http({
           url: '/api/projects/',
           method: "POST",
@@ -24,7 +22,6 @@ angular.module('bigdig.controllers', [])
           $location.path("/");
       }).error(function (data, status, headers, config) {
           $scope.status = status + ' ' + headers;
-          alert('Error: ' + status + data + headers + config);
       });
     };
   }])

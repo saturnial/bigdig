@@ -1,8 +1,7 @@
 import models
 from api import serializers
 from rest_framework import viewsets
-from django.contrib.auth.models import User
-from django.conf import settings
+
 
 class ProjectViewSet(viewsets.ModelViewSet):
   queryset = models.Project.objects.all()

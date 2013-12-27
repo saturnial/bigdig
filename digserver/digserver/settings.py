@@ -78,7 +78,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
@@ -89,12 +88,6 @@ STATICFILES_DIRS = (
 
 # REST framework integration
 
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-       'rest_framework.permissions.AllowAny',
-    )
-}
-
 # REST_FRAMEWORK = {
 #     'PAGINATE_BY': 10,
 #     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -103,6 +96,7 @@ REST_FRAMEWORK = {
 #     )
 # }
 
+# Facebook integration
 
 FACEBOOK_APP_ID = 1430066343890925
 FACEBOOK_APP_SECRET = 'd593879a9a4de11dccc4075841f9ee05'
