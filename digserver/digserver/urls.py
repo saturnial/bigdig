@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 from rest_framework import routers
-from kickstart import views
+from api import views
 
 from django.contrib import admin
 admin.autodiscover()
@@ -10,5 +10,6 @@ router.register(r'projects', views.ProjectViewSet)
 
 urlpatterns = patterns('',
    url(r'^api/', include(router.urls)),
-   url(r'^', include('client.urls')),
-   url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')))
+   url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+   url(r'^', include('client.urls'))
+   )

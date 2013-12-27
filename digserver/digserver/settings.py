@@ -36,7 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'kickstart',
+    'api',
     'client',
     'rest_framework',
 )
@@ -57,7 +57,6 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'digserver.urls'
 
 WSGI_APPLICATION = 'digserver.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
