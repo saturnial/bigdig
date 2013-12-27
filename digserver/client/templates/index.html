@@ -6,9 +6,13 @@
   <link rel="stylesheet" href="/static/app/css/app.css"/>
 </head>
 <body>
+  {% if user.is_authenticated %}<h1>Welcome {{ user }}</h1> {% endif %}
   <ul class="menu">
     <li><a href="#/">Home</a></li>
     <li><a href="#/add-project">Add Project</a></li>
+    {% if user.is_authenticated %}
+    <li><a href="{% url 'auth_logout' %}?next={{ request.path|urlencode }}">logout</a></li>
+    {% endif %}
   </ul>
 
   <h1>BigDig</h1>

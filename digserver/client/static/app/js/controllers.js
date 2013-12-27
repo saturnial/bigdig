@@ -24,6 +24,7 @@ angular.module('bigdig.controllers', [])
           $location.path("/");
       }).error(function (data, status, headers, config) {
           $scope.status = status + ' ' + headers;
+          alert('Error: ' + status + data + headers + config);
       });
     };
   }])
