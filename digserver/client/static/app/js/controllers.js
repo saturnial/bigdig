@@ -4,40 +4,45 @@
 
 angular.module('bigdig.controllers', [])
 
-  .controller('AddProjectCtrl', ['$scope', '$http', '$location', 'ProjectData', function($scope, $http, $location, ProjectData) {
-    var geoCodeResult; 
-    var deferred = $q.defer();
-
+  .controller('AddProjectCtrl', ['$scope', '$http', '$location', '$q', 'ProjectData', function($scope, $http, $location, $q, ProjectData) {
+    // TODO(jmylen): Move this to a service.
     function codeAddress() {
-    var result = 0;
-    var address = document.getElementById("location").value;
-    geocoder.geocode( { 'address': address}, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-        map.setCenter(results[0].geometry.location);
-        var marker = new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location
-        });
-        latitude = results[0].geometry.location.nb;
-        longitude = results[0].geometry.location.ob;
-        geoCodeResult = {latitude: latitude,
+    var deferred = $q.defer();
+    
+    setTimeout(function () {
+      $scope.$apply(function() {
+        var address = document.getElementById("location").value;
+        geocoder.geocode( { 'address': address}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          map.setCenter(results[0].geometry.location);
+          var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+          });
+          var latitude = results[0].geometry.location.nb;
+          var longitude = results[0].geometry.location.ob;
+          var geoCodeResult = {latitude: latitude,
                          longitude: longitude};
-      } else {
-        alert("Geocode was not successful for the following reason: " + status);
-      }
-    });
+          deferred.resolve(geoCodeResult)
+        } else {
+            deferred.reject("Geocode was not successful for the following reason: " + status);
+        }
+        });
+      });
+    }, 1000);
+    return deferred.promise;
   }
     $scope.addProject = function() {
       if (!$scope.title || !$scope.description || !$scope.funding_goal) {
         return;
       }
-      codeAddress(); 
-      alert(geoCodeResults);
-      var newProject = {title: $scope.title,
-                        description: $scope.description,
-                        funding_goal: $scope.funding_goal,
-                        latitude: geoCodeResults.latitude,
-                        longitude: geoCodeResults.longitude}
+      var promise = codeAddress(); 
+      promise.then(function(geoCodeResults) {
+        var newProject = {title: $scope.title,
+                          description: $scope.description,
+                          funding_goal: $scope.funding_goal,
+                          latitude: geoCodeResults.latitude,
+                          longitude: geoCodeResults.longitude}
       $http({
           url: '/api/projects/',
           method: "POST",
@@ -48,6 +53,7 @@ angular.module('bigdig.controllers', [])
       }).error(function (data, status, headers, config) {
           $scope.status = status + ' ' + headers;
       });
+    });
     };
   }])
 
