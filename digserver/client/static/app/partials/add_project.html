@@ -1,5 +1,5 @@
 <h2>Add project</h1>
-
+<!-- TODO: Form should not be using divs for structure. -->
 <form ng-submit="addProject()">
   <div>Title</div>
   <div>
@@ -12,8 +12,10 @@
   <div>Funding Goal</div>
   <div>
     <input type="text" required ng-model="funding_goal"/> 
+  <div>Location</div>
   </div>
-  <div>
+    <input id="location" type="text" required ng-model="location" onfocus="initialize()"/>
     <input type="submit" />
   </div>
 </form>
+<div id="map-canvas" style="width:250px; height:250px"></div>
