@@ -4,6 +4,23 @@
   <meta charset="utf-8">
   <title>BigDig -- get your shovel-ready project off the ground</title>
   <link rel="stylesheet" href="/static/app/css/app.css"/>
+<script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATSyI7iJeU9RprbmcXvotWPMS97az0IHU&sensor=false">
+    </script>
+    <script type="text/javascript">
+    // TODO(jmylen): This code needs to be refactored into a controller or view partial.
+      var geocoder;
+      var map;
+      function initialize() {
+        geocoder = new google.maps.Geocoder();
+        var mapOptions = {
+          center: new google.maps.LatLng(37.7833, 122.4167),
+          zoom: 2 
+        };
+        map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+      }
+    </script>
 </head>
 <body>
   {% if user.is_authenticated %}<h1>Welcome {{ user }}</h1> {% endif %}
@@ -23,6 +40,7 @@
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
   -->
   <script src="/static/app/lib/angular/angular.js"></script>
+  <script src="/static/app/lib/angular/angular-cookies.js"></script>
   <script src="/static/app/lib/angular/angular-route.js"></script>
   <script src="/static/app/lib/bootstrap-gh-pages/ui-bootstrap-tpls-0.7.0.min.js"></script>
   <script src="/static/app/js/app.js"></script>
