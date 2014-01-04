@@ -4,39 +4,18 @@
 
 angular.module('bigdig.controllers', [])
 
-  .controller('AddProjectCtrl', ['$scope', '$http', '$location', '$q', 'ProjectData', function($scope, $http, $location, $q, ProjectData) {
-    // TODO(jmylen): Move this to a service.
-    function codeAddress() {
-    var deferred = $q.defer();
-    
-    setTimeout(function () {
-      $scope.$apply(function() {
-        var address = document.getElementById("location").value;
-        geocoder.geocode( { 'address': address}, function(results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-          map.setCenter(results[0].geometry.location);
-          var marker = new google.maps.Marker({
-              map: map,
-              position: results[0].geometry.location
-          });
-          var latitude = results[0].geometry.location.nb;
-          var longitude = results[0].geometry.location.ob;
-          var geoCodeResult = {latitude: latitude,
-                         longitude: longitude};
-          deferred.resolve(geoCodeResult)
-        } else {
-            deferred.reject("Geocode was not successful for the following reason: " + status);
-        }
-        });
-      });
-    }, 1000);
-    return deferred.promise;
-  }
+  .controller('AddProjectCtrl', ['$scope', '$http', '$location', 'ProjectData', 'GoogleMaps', function($scope, $http, $location, ProjectData, GoogleMaps) {
+    var mapOptions = {
+          center: new google.maps.LatLng(37.7833, -122.4167),
+          zoom: 12};
+    GoogleMaps.initializeMap(document.getElementById("map-canvas"),
+          mapOptions);
     $scope.addProject = function() {
       if (!$scope.title || !$scope.description || !$scope.funding_goal) {
         return;
       }
-      var promise = codeAddress(); 
+      var address = document.getElementById("location").value;
+      var promise = GoogleMaps.geoCodeAddress(address); 
       promise.then(function(geoCodeResults) {
         var newProject = {title: $scope.title,
                           description: $scope.description,
@@ -61,9 +40,22 @@ angular.module('bigdig.controllers', [])
         $scope.projects = data;
       });
   }])
-  .controller('ProjectDetailsCtrl', ['$scope', '$routeParams',  'ProjectData', function($scope,
-      $routeParams, ProjectData) {
+  .controller('ProjectDetailsCtrl', ['$scope', '$routeParams',  'ProjectData', 'GoogleMaps', function($scope,
+      $routeParams, ProjectData, GoogleMaps) {
+    
       ProjectData.getProject($routeParams.projectId, function(projectData) {
         $scope.project = projectData;
+        var latitude = $scope.project.latitude;
+        var longitude = $scope.project.longitude;
+        var mapOptions = {
+            center: new google.maps.LatLng(latitude, longitude),
+            zoom: 18};
+        GoogleMaps.initializeMap(document.getElementById("project-details-map"),
+            mapOptions);
+        GoogleMaps.addMarker(latitude, longitude);
+        var locationPromise = GoogleMaps.reverseGeoCode(latitude, longitude);
+        locationPromise.then(function(locationResults) {
+          $scope.project.location = locationResults[3].formatted_address;
+        } )
       });
   }]);
