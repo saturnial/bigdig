@@ -37,5 +37,5 @@ nosetests.xml
 # Mac crap
 .DS_Store
 
-digserver/images/
+server/images/
 *.log
