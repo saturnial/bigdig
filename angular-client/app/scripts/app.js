@@ -16,6 +16,10 @@ angular.module('bigdig', [
         templateUrl: '/views/main.html',
         controller: 'ViewProjectsCtrl'
       })
+      .when('/view-projects', {
+        templateUrl: '/views/view_projects.html',
+        controller: 'ViewProjectsCtrl'
+      })
       .when('/add-project', {
         templateUrl: '/views/add_project.html',
         controller: 'AddProjectCtrl'
@@ -25,6 +29,6 @@ angular.module('bigdig', [
       });
   })
   .run(function run($http, $cookies) {
-      // For CSRF token compatibility with Django
+      // For CSRF token compatibility with the Django server
       $http.defaults.headers.post['X-CSRFToken'] = $cookies['csrftoken'];
   });
