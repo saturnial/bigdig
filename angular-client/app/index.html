@@ -18,6 +18,8 @@
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    <!-- TODO (jmylen): figure out if we need to specify a base URL -->
+    <!-- <base href="/"> --> 
   </head>
   <body ng-app="bigdig">
     <!--[if lt IE 7]>
@@ -29,8 +31,8 @@
       <div class="header">
         <ul class="nav nav-pills pull-right">
           <li class="active"><a ng-href="/">Home</a></li>
-          <li><a ng-href="/view-projects">View Projects</a></li>
-          <li><a ng-href="/add-project">Add Project</a></li>
+          <li><a ng-href="/#/view-projects">View Projects</a></li>
+          <li><a ng-href="/#/add-project">Add Project</a></li>
         </ul>
         <h3>The Big Dig</h3>
       </div>
