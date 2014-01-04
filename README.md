@@ -8,5 +8,5 @@ For local development the application runs as two separate components. The front
 
  * `brew install npm` - If you've never used Node.js and you have homebrew installed on OSX.
  * `npm install -g bower grunt` - Installs global dependencies for angular app.
- * `cd angular-client && npm install && bower install` - Installs project dependencies.
- * `grunt serve` - Run from `./angular-client`. Starts local webserver for frontend.
+ * `cd angular-client; npm install && bower install; cd -` - Installs project dependencies.
+ * `./app.sh` - Run both Django server backend and angular JS frontend.
