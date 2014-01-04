@@ -15,6 +15,9 @@ module.exports = function (grunt) {
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
+  // enable the grunt-connect-proxy plugin.
+  grunt.loadNpmTasks('grunt-connect-proxy');
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -65,13 +68,45 @@ module.exports = function (grunt) {
         hostname: 'localhost',
         livereload: 35729
       },
+      proxies: [
+                {
+                    context: '/api',
+                    host: 'localhost',
+                    port: 8000,
+                    https: false,
+                    changeOrigin: false,
+                    xforward: false,
+                    // headers: {
+                    //     "x-custom-added-header": value
+                    // }
+                }
+            ],
       livereload: {
         options: {
           open: true,
           base: [
             '.tmp',
             '<%= yeoman.app %>'
-          ]
+          ],
+          middleware: function (connect, options) {
+              var middlewares = [];
+              var directory = options.directory || options.base[options.base.length - 1];
+              if (!Array.isArray(options.base)) {
+                  options.base = [options.base];
+              }
+                           // Setup the proxy
+                           middlewares.push(require('grunt-connect-proxy/lib/utils').proxyRequest);
+
+              options.base.forEach(function(base) {
+                  // Serve static files.
+                  middlewares.push(connect.static(base));
+              });
+
+              // Make directory browse-able.
+              middlewares.push(connect.directory(directory));
+
+              return middlewares;
+          }
         }
       },
       test: {
@@ -335,6 +370,7 @@ module.exports = function (grunt) {
       'bower-install',
       'concurrent:server',
       'autoprefixer',
+      'configureProxies',
       'connect:livereload',
       'watch'
     ]);
