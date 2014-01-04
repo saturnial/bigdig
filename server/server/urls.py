@@ -1,6 +1,7 @@
-from django.conf.urls import patterns, include, url
-from rest_framework import routers
 from api import views
+from django.conf.urls import patterns, include, url
+from django.views.generic.base import RedirectView
+from rest_framework import routers
 
 from django.contrib import admin
 admin.autodiscover()
@@ -12,6 +13,7 @@ router.register(r'photos', views.PhotoViewSet)
 # router.register(r'contributions', views.ContributionViewSet)
 
 urlpatterns = patterns('',
+    url(r'^$', RedirectView.as_view(url='/api/', permanent=True), name='index'),
 # TODO(jmylen): Finalize integration with Facebook login.
 #   url(r'^login/', 'client.views.login', name='login'),
 #   url(r'^facebook/', include('django_facebook.urls')),

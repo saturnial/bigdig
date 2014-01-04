@@ -9,10 +9,6 @@ class ProjectSerializer(serializers.HyperlinkedModelSerializer):
     fields = ('id', 'url', 'title', 'description', 'funding_goal', 'latitude', 'longitude')
 
 
-# class ContributionSerializer(serializers.HyperlinkedModelSerializer):
-#   class Meta:
-#     model = models.Contribution
-
 class PhotoSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
     model = models.Photo
