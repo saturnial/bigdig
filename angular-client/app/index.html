@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
+    <title>BigDig -- get your shovel-ready project off the ground</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -17,10 +17,9 @@
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="bower_components/angular-ui/build/angular-ui.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="angularClientApp">
+  <body ng-app="bigdig">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -30,7 +29,7 @@
       <div class="header">
         <ul class="nav nav-pills pull-right">
           <li class="active"><a ng-href="#">Home</a></li>
-          <li><a ng-href="#/addproject">Add Project</a></li>
+          <li><a ng-href="#/add-project">Add Project</a></li>
           <li><a ng-href="#">Logout</a></li>
         </ul>
         <h3 class="text-muted">The Big Dig</h3>
@@ -69,7 +68,26 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/controllers.js"></script>
+        <script src="scripts/services/services.js"></script>
         <!-- endbuild -->
+
+        <!-- TODO(jmylen): figure out where maps JS should go -->
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATSyI7iJeU9RprbmcXvotWPMS97az0IHU&sensor=false"></script>
+        <script type="text/javascript">
+      var geocoder;
+      var map;
+      function initialize() {
+        geocoder = new google.maps.Geocoder();
+        var mapOptions = {
+          center: new google.maps.LatLng(37.7833, -122.4167),
+          zoom: 6 
+        };
+        map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+      }
+    </script>
+    <!-- endTODO -->
+
 </body>
 </html>
