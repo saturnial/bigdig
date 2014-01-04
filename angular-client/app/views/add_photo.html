@@ -1,0 +1,13 @@
+<div>
+  <h2>Add photos to your project</h2>
+</div>
+
+    <div ng-controller="uploadFileCtrl">
+      <input type="text" ng-model="project">
+      <input type="file" ng-file-select="onFileSelect($files)" >
+      <input type="file" ng-file-select="onFileSelect($files)" multiple>
+      <div class="drop-box" ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="dragover" ng-show="dropSupported">drop files here
+      </div>
+      <div ng-file-drop-available="dropSupported=true" ng-show="!dropSupported">HTML5 Drop File is not supported!</div>
+      <button type="button" ng-click="upload.abort()" class="btn btn-danger">Cancel Upload</button>
+    </div>

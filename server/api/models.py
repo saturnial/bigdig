@@ -9,8 +9,8 @@ class Project(models.Model):
   amount_raised = models.IntegerField(default=0)
   created_on = models.DateTimeField(auto_now_add=True)
   modified_on = models.DateTimeField(auto_now=True)
-  latitude = models.FloatField()
-  longitude = models.FloatField()
+  latitude = models.FloatField(null=True, blank=True)
+  longitude = models.FloatField(null=True, blank=True)
   # creator = models.ForeignKey(FacebookCustomUser)
 
   # def __unicode__(self):
