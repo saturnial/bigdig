@@ -44,7 +44,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 280;
+    return 225;
 }
 
 
@@ -55,7 +55,7 @@
     cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
         NSArray * nibObjects = [[NSBundle mainBundle] loadNibNamed:@"projectCell" owner:nil options: nil];
-        
+        [cell addProgressBar];
         for(id currentObject in nibObjects){
             if([currentObject isKindOfClass:[projectCell class]]){
                 cell = (projectCell *) currentObject;
@@ -63,6 +63,8 @@
         }
     }
     
+    
+    [cell setProgress:0.23];
     cell.title.text = @"New Parklet";
     cell.location.text = @"21 & Harrison";
     cell.description.text = @"sample description";

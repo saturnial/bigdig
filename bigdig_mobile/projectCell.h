@@ -15,4 +15,6 @@
 @property (weak, nonatomic) IBOutlet UITextView *description;
 @property (weak, nonatomic) IBOutlet UILabel *voteCount;
 
+-(void)addProgressBar;
+-(void)setProgress:(float)progress;
 @end
