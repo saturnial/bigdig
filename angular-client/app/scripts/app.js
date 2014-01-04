@@ -9,7 +9,8 @@ angular.module('bigdig', [
   'bigdig.controllers',
   'bigdig.services'
 ])
-  .config(function($routeProvider) {
+  .config(function($locationProvider, $routeProvider) {
+    $locationProvider.html5Mode(true).hashPrefix('#');
     $routeProvider
       .when('/', {
         templateUrl: '/views/main.html',
