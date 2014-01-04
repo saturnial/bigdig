@@ -14,10 +14,7 @@ router.register(r'photos', views.PhotoViewSet)
 
 urlpatterns = patterns('',
     url(r'^$', RedirectView.as_view(url='/api/', permanent=True), name='index'),
-# TODO(jmylen): Finalize integration with Facebook login.
-#   url(r'^login/', 'client.views.login', name='login'),
-#   url(r'^facebook/', include('django_facebook.urls')),
-#   url(r'^accounts/', include('django_facebook.auth_urls')),
-   url(r'^api/', include(router.urls)),
-   url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-   )
+    url('', include('social.apps.django_app.urls', namespace='social')),
+    url(r'^api/', include(router.urls)),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    )

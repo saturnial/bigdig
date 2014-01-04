@@ -18,7 +18,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '#97t145$drk&15a2h=3b3ciehxl=rd4=9(2g*pm_%@y9)2k**@'
+SECRET_KEY = os.environ.get('SESSION_KEY') if os.environ.get('SESSION_KEY') else '#97t145$drk&15a2h=3b3ciehxl=rd4=9(2g*pm_%@y9)2k**@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -26,7 +26,6 @@ DEBUG = True
 TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -39,7 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'api',
     'rest_framework',
-    'django_facebook',
+    'social.apps.django_app.default',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -86,21 +85,10 @@ STATICFILES_DIRS = (
   os.path.join(BASE_DIR, 'client', 'static'),
 )
 
-# REST framework integration
-
-# REST_FRAMEWORK = {
-#     'PAGINATE_BY': 10,
-#     'DEFAULT_AUTHENTICATION_CLASSES': (
-#         'rest_framework.authentication.BasicAuthentication',
-#         'rest_framework.authentication.SessionAuthentication',
-#     )
-# }
-
-# Facebook integration
-
-FACEBOOK_APP_ID = 1430066343890925
-FACEBOOK_APP_SECRET = 'd593879a9a4de11dccc4075841f9ee05'
-AUTH_USER_MODEL = 'django_facebook.FacebookCustomUser'
+# http://psa.matiasaguirre.net/docs/backends/facebook.html
+SOCIAL_AUTH_FACEBOOK_KEY = 1430066343890925
+SOCIAL_AUTH_FACEBOOK_SECRET = 'd593879a9a4de11dccc4075841f9ee05'
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
@@ -111,10 +99,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.tz',
     'django.core.context_processors.request',
     'django.contrib.messages.context_processors.messages',
-    'django_facebook.context_processors.facebook',
 )
 
 AUTHENTICATION_BACKENDS = (
-    'django_facebook.auth_backends.FacebookBackend',
+    'social.backends.facebook.OAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
