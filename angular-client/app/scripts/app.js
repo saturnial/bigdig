@@ -16,6 +16,10 @@ angular.module('bigdig', [
         templateUrl: '/views/main.html',
         controller: 'ViewProjectsCtrl'
       })
+       .when('/view/:projectId', {
+        templateUrl: '/views/project_detail.html',
+        controller: 'ProjectDetailsCtrl'
+      })
       .when('/view-projects', {
         templateUrl: '/views/view_projects.html',
         controller: 'ViewProjectsCtrl'

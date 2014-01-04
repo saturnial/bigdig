@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class ProjectSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
     model = models.Project
-    fields = ('id', 'url', 'title', 'description', 'funding_goal', ) #'latitude', 'longitude')
+    fields = ('id', 'url', 'title', 'description', 'funding_goal', 'latitude', 'longitude')
 
 
 # class ContributionSerializer(serializers.HyperlinkedModelSerializer):

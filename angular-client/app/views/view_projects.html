@@ -7,7 +7,7 @@
 </thead>
 <tbody>
   <tr ng-repeat="project in projects">
-    <td>{{ project.title }}</td>
+    <td><a ng-href="/view/{{project.id}}">{{ project.title }}</a></td>
     <td>{{ project.description }}</td>
     <td>{{ project.funding_goal }}</td>
   </tr>

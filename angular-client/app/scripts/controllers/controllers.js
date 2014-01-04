@@ -56,9 +56,14 @@ angular.module('bigdig.controllers', [])
     });
     };
   }])
-
   .controller('ViewProjectsCtrl', ['$scope', 'ProjectData', function($scope, ProjectData) {
       ProjectData.getProjects(function(data) {
         $scope.projects = data;
+      });
+  }])
+  .controller('ProjectDetailsCtrl', ['$scope', '$routeParams',  'ProjectData', function($scope,
+      $routeParams, ProjectData) {
+      ProjectData.getProject($routeParams.projectId, function(projectData) {
+        $scope.project = projectData;
       });
   }]);
