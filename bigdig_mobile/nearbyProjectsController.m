@@ -44,26 +44,36 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 80;
+    return 280;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    projectCell *cell = nil;
     static NSString *CellIdentifier = @"Cell";
-    
-    projectCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
-        cell = [[projectCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        NSArray * nibObjects = [[NSBundle mainBundle] loadNibNamed:@"projectCell" owner:nil options: nil];
+        
+        for(id currentObject in nibObjects){
+            if([currentObject isKindOfClass:[projectCell class]]){
+                cell = (projectCell *) currentObject;
+            }
+        }
     }
     
-    cell.text = [self.nearbyProjectsArray objectAtIndex:indexPath.row];
-    
+    cell.title.text = @"New Parklet";
+    cell.location.text = @"21 & Harrison";
+    cell.description.text = @"sample description";
+    cell.voteCount.text = @"16 of 20 Votes";
+    [cell.projectImage setImageWithURL:[NSURL URLWithString:@"http://brentwood.thefuntimesguide.com/images/blogs/new-brentwood-park-concord-road.jpg"] placeholderImage:[UIImage imageNamed:@"progress-bar-foreground"]];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     [self performSegueWithIdentifier:@"detail" sender:self];
 }
 
@@ -87,6 +97,19 @@
 
 - (IBAction)addProjectPressed:(id)sender {
     [self presentNewProjectPage];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    /*UINavigationController *navController = [segue destinationViewController];
+    addProjectController *detail = (addProjectController *)navController.topViewController;
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = (id)detail;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    [self presentViewController:picker animated:NO completion:NULL];*/
 }
 
 - (void)presentNewProjectPage

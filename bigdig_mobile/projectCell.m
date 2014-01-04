@@ -7,6 +7,12 @@
 //
 
 #import "projectCell.h"
+#import "MCProgressBarView.h"
+
+@interface projectCell()
+@property (strong, nonatomic) MCProgressBarView *progressBarView;
+
+@end
 
 @implementation projectCell
 
@@ -18,9 +24,8 @@
         self.selectedBackgroundView = [[UIView alloc] init];
         self.selectedBackgroundView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.5];
         
-        self.imageView.contentMode = UIViewContentModeScaleAspectFill;
-        self.imageView.layer.cornerRadius = 10;
-        self.imageView.layer.masksToBounds = YES;
+        self.projectImage.contentMode = UIViewContentModeScaleAspectFit;
+        //self.projectImage.layer.masksToBounds = YES;
         
         self.textLabel.font = [UIFont fontWithName:@"BebasNeue" size:22];
         self.textLabel.textColor = [UIColor colorWithRed:55.0/255.0 green:146.0/255.0 blue:240.0/255.0 alpha:1.0];
@@ -33,6 +38,17 @@
 
     }
     return self;
+}
+
+
+-(void)addProgressBar{
+    self.progressBarView = [[MCProgressBarView alloc]  initWithFrame:CGRectMake(320/2-100, 50, 200, 4)
+                                                     backgroundImage:[[UIImage imageNamed:@"progress-bar-background"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 3, 0, 3)]
+                                                     foregroundImage:[[UIImage imageNamed:@"progress-bar-foreground"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 3, 0, 3)]];
+}
+
+-(void)setProgress:(NSNumber *)progress{
+    self.progressBarView.progress = [progress floatValue];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

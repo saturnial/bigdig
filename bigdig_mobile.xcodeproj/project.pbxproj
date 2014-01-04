@@ -29,9 +29,15 @@
 		A2EC091B1878B24A0032B659 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2EC091A1878B24A0032B659 /* CoreLocation.framework */; };
 		A2EC091D1878B24A0032B659 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2EC091C1878B24A0032B659 /* MapKit.framework */; };
 		A2EC09201878B6660032B659 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2EC091F1878B6660032B659 /* CoreMotion.framework */; };
-		A2EC09221878B7750032B659 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2EC09211878B7750032B659 /* SDWebImage.framework */; };
 		A2EC09241878B7990032B659 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2EC09231878B7990032B659 /* ImageIO.framework */; };
 		A2EC09261878B7A10032B659 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2EC09251878B7A10032B659 /* CoreImage.framework */; };
+		A2EC092A1878BF9F0032B659 /* MCProgressBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = A2EC09281878BF9F0032B659 /* MCProgressBarView.m */; };
+		A2EC092C1878BFA90032B659 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2EC092B1878BFA90032B659 /* SDWebImage.framework */; };
+		A2EC09311878C0530032B659 /* progress-bar-foreground.png in Resources */ = {isa = PBXBuildFile; fileRef = A2EC092D1878C0530032B659 /* progress-bar-foreground.png */; };
+		A2EC09321878C0530032B659 /* progress-bar-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2EC092E1878C0530032B659 /* progress-bar-background@2x.png */; };
+		A2EC09331878C0530032B659 /* progress-bar-background.png in Resources */ = {isa = PBXBuildFile; fileRef = A2EC092F1878C0530032B659 /* progress-bar-background.png */; };
+		A2EC09341878C0530032B659 /* progress-bar-foreground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2EC09301878C0530032B659 /* progress-bar-foreground@2x.png */; };
+		A2EC09361878C60A0032B659 /* projectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2EC09351878C60A0032B659 /* projectCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,9 +83,16 @@
 		A2EC091A1878B24A0032B659 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A2EC091C1878B24A0032B659 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A2EC091F1878B6660032B659 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
-		A2EC09211878B7750032B659 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = ../../Desktop/SDWebImage.framework; sourceTree = "<group>"; };
 		A2EC09231878B7990032B659 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		A2EC09251878B7A10032B659 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		A2EC09281878BF9F0032B659 /* MCProgressBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCProgressBarView.m; sourceTree = "<group>"; };
+		A2EC09291878BF9F0032B659 /* MCProgressBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCProgressBarView.h; sourceTree = "<group>"; };
+		A2EC092B1878BFA90032B659 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
+		A2EC092D1878C0530032B659 /* progress-bar-foreground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progress-bar-foreground.png"; sourceTree = "<group>"; };
+		A2EC092E1878C0530032B659 /* progress-bar-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progress-bar-background@2x.png"; sourceTree = "<group>"; };
+		A2EC092F1878C0530032B659 /* progress-bar-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progress-bar-background.png"; sourceTree = "<group>"; };
+		A2EC09301878C0530032B659 /* progress-bar-foreground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progress-bar-foreground@2x.png"; sourceTree = "<group>"; };
+		A2EC09351878C60A0032B659 /* projectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = projectCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,8 +106,8 @@
 				A2EC091D1878B24A0032B659 /* MapKit.framework in Frameworks */,
 				A2EC091B1878B24A0032B659 /* CoreLocation.framework in Frameworks */,
 				A2E7852F1878954800AE25BB /* CoreGraphics.framework in Frameworks */,
-				A2EC09221878B7750032B659 /* SDWebImage.framework in Frameworks */,
 				A2E785311878954800AE25BB /* UIKit.framework in Frameworks */,
+				A2EC092C1878BFA90032B659 /* SDWebImage.framework in Frameworks */,
 				A2E7852D1878954800AE25BB /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -134,9 +147,9 @@
 		A2E7852B1878954800AE25BB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A2EC092B1878BFA90032B659 /* SDWebImage.framework */,
 				A2EC09251878B7A10032B659 /* CoreImage.framework */,
 				A2EC09231878B7990032B659 /* ImageIO.framework */,
-				A2EC09211878B7750032B659 /* SDWebImage.framework */,
 				A2EC091F1878B6660032B659 /* CoreMotion.framework */,
 				A2EC091C1878B24A0032B659 /* MapKit.framework */,
 				A2EC091A1878B24A0032B659 /* CoreLocation.framework */,
@@ -155,6 +168,7 @@
 				A2A1F0121878ABE600DB1F60 /* projectDetailController.m */,
 				A2A0600118789A49004DFC2C /* projectCell.h */,
 				A2A0600218789A49004DFC2C /* projectCell.m */,
+				A2EC09351878C60A0032B659 /* projectCell.xib */,
 				A2A0600418789B78004DFC2C /* addProjectController.h */,
 				A2A0600518789B78004DFC2C /* addProjectController.m */,
 				A2E7853B1878954800AE25BB /* bigAppDelegate.h */,
@@ -174,6 +188,8 @@
 			isa = PBXGroup;
 			children = (
 				A2EC09171878B2480032B659 /* MKMapView+ZoomLevel.h */,
+				A2EC09281878BF9F0032B659 /* MCProgressBarView.m */,
+				A2EC09291878BF9F0032B659 /* MCProgressBarView.h */,
 				A2EC09181878B2480032B659 /* MKMapView+ZoomLevel.m */,
 				A2E78564187896A400AE25BB /* Images */,
 				A2E785341878954800AE25BB /* bigdig_mobile-Info.plist */,
@@ -205,6 +221,10 @@
 		A2E78564187896A400AE25BB /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				A2EC092D1878C0530032B659 /* progress-bar-foreground.png */,
+				A2EC092E1878C0530032B659 /* progress-bar-background@2x.png */,
+				A2EC092F1878C0530032B659 /* progress-bar-background.png */,
+				A2EC09301878C0530032B659 /* progress-bar-foreground@2x.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -287,7 +307,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2E785481878954800AE25BB /* Images.xcassets in Resources */,
+				A2EC09311878C0530032B659 /* progress-bar-foreground.png in Resources */,
+				A2EC09321878C0530032B659 /* progress-bar-background@2x.png in Resources */,
 				A2E785371878954800AE25BB /* InfoPlist.strings in Resources */,
+				A2EC09331878C0530032B659 /* progress-bar-background.png in Resources */,
+				A2EC09361878C60A0032B659 /* projectCell.xib in Resources */,
+				A2EC09341878C0530032B659 /* progress-bar-foreground@2x.png in Resources */,
 				A2E785401878954800AE25BB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,6 +335,7 @@
 				A2E785391878954800AE25BB /* main.m in Sources */,
 				A2EC09191878B2480032B659 /* MKMapView+ZoomLevel.m in Sources */,
 				A2A1F0131878ABE600DB1F60 /* projectDetailController.m in Sources */,
+				A2EC092A1878BF9F0032B659 /* MCProgressBarView.m in Sources */,
 				A2E785461878954800AE25BB /* bigSecondViewController.m in Sources */,
 				A2E785431878954800AE25BB /* nearbyProjectsController.m in Sources */,
 				A2A0600618789B78004DFC2C /* addProjectController.m in Sources */,
@@ -449,10 +475,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/dylankeil/Desktop,
+					/Users/dylankeil/CODE/bigdig_mobile,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "bigdig_mobile/bigdig_mobile-Prefix.pch";
 				INFOPLIST_FILE = "bigdig_mobile/bigdig_mobile-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "99DFD316-9C9D-40B5-882D-6C0FC60885A2";
@@ -469,10 +497,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/dylankeil/Desktop,
+					/Users/dylankeil/CODE/bigdig_mobile,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "bigdig_mobile/bigdig_mobile-Prefix.pch";
 				INFOPLIST_FILE = "bigdig_mobile/bigdig_mobile-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "99DFD316-9C9D-40B5-882D-6C0FC60885A2";
