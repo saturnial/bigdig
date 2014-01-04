@@ -1,12 +1,12 @@
-bigdig
-======
-a kickstarter for public infrastructure where citizens can post projects they want to help realize in their community.
+# Bigdig
 
+A kickstarter for public infrastructure where citizens can post projects they want to help realize in their community.
 
-Running the application locally
-===============================
+## Running the application locally
 
-For local development the application runs as two separate components. The frontend code runs from a NodeJs
-server connecting to a Django backend acting as an API.    
+For local development the application runs as two separate components. The front-end code runs from a [Node.js](http://nodejs.org/) server connecting to a [Django](https://www.djangoproject.com/) backend acting as an API.
 
-TODO(jmylen): Write full documentation for getting the application running locally.
+ * `brew install npm` - If you've never used Node.js and you have homebrew installed on OSX.
+ * `npm install -g bower grunt` - Installs global dependencies for angular app.
+ * `cd angular-client; npm install && bower install; cd -` - Installs project dependencies.
+ * `./app.sh` - Run both Django server backend and angular JS frontend.
