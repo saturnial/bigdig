@@ -8,9 +8,9 @@ class ProjectViewSet(viewsets.ModelViewSet):
   serializer_class = serializers.ProjectSerializer
 
 
-class ContributionViewSet(viewsets.ModelViewSet):
-  queryset = models.Contribution.objects.all()
-  serializer_class = serializers.ContributionSerializer
+# class ContributionViewSet(viewsets.ModelViewSet):
+#   queryset = models.Contribution.objects.all()
+#   serializer_class = serializers.ContributionSerializer
 
 
 # class UserViewSet(viewsets.ModelViewSet):
