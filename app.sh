@@ -5,10 +5,9 @@
 echo 'Killing any currently running Django servers...'
 pkill -f manage.py
 echo 'Starting Django server...'
-cd server
-screen -d -m ./manage.py runserver 8000
+screen -d -m ./server/manage.py runserver 8000
 
 echo 'Open a new tab with CMD+t and enter screen -r to view Django server...' 
-cd ../angular-client
+cd ./angular-client
 echo 'Starting Node server...'
 grunt serve --port 9000

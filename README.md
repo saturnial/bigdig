@@ -23,3 +23,5 @@ For local development the application runs as two separate components. The front
 
  * `./app.sh` - Run both Django server backend and angular JS frontend.
    * Note: If the python backend crashes, you won't see the output.
+   * run `screen -r` in another terminal to get python logs.
+   * If you want, you can also open two teminals and run `cd angular-server; grunt serve --port 9000` in one terminal and `server/manage.py runserver 8000` from the other.
