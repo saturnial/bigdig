@@ -12,11 +12,13 @@ class Project(models.Model):
   latitude = models.FloatField()
   longitude = models.FloatField()
   # creator = models.ForeignKey(FacebookCustomUser)
-  # image = models.ImageField(blank=True, null=True)
 
   # def __unicode__(self):
   #   return self.title + ' -- created by ' + self.creator.username
 
+class Photo(models.Model):
+  project = models.ForeignKey(Project, related_name='photos')
+  image = models.ImageField(upload_to='%Y/%m/%d')
 
 # class Contribution(models.Model):
 #   project = models.ForeignKey(Project)

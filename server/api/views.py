@@ -13,6 +13,11 @@ class ProjectViewSet(viewsets.ModelViewSet):
 #   serializer_class = serializers.ContributionSerializer
 
 
+class PhotoViewSet(viewsets.ModelViewSet):
+  queryset = models.Photo.objects.all()
+  serializer_class = serializers.PhotoSerializer
+
+
 # class UserViewSet(viewsets.ModelViewSet):
 #     """
 #     API endpoint that allows users to be viewed or edited.
