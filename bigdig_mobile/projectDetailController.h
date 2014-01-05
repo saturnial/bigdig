@@ -12,5 +12,6 @@
 
 @interface projectDetailController : UIViewController<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *myMap;
+@property (weak, nonatomic) IBOutlet UIImageView *projectImage;
 
 @end

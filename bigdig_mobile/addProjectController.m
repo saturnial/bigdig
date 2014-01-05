@@ -40,6 +40,7 @@
         
     }
     
+    self.notesField.delegate = (id)self;
     self.myMap.delegate = (id)self;
     
     bigAppDelegate * delegate = (bigAppDelegate * )[[UIApplication sharedApplication]delegate];
@@ -162,10 +163,18 @@
 
 
 - (IBAction)didBeginName:(id)sender {
+    self.dottedLine.hidden = TRUE;
+    
     if ([self.keypadText.text isEqualToString:@""]) {
         self.votesBlankButton.hidden = FALSE;
     }else{
         self.votesBlankButton.hidden = TRUE;
+    }
+    
+    if([self.notesField.text isEqualToString:@""]){
+        self.dottedLineDescription.hidden = FALSE;
+    }else{
+        self.dottedLineDescription.hidden = TRUE;
     }
 }
 
@@ -192,6 +201,12 @@
     }else{
         self.dottedLine.hidden = TRUE;
     }
+    
+    if([self.notesField.text isEqualToString:@""]){
+        self.dottedLineDescription.hidden = FALSE;
+    }else{
+        self.dottedLineDescription.hidden = TRUE;
+    }
 }
 
 - (BOOL) textView: (UITextView*) textView
@@ -204,9 +219,33 @@ shouldChangeTextInRange: (NSRange) range
         [self publishPressed:self];
         
         [textView resignFirstResponder];
+        
+        if([self.notesField.text isEqualToString:@""]){
+            self.dottedLineDescription.hidden = FALSE;
+        }else{
+            self.dottedLineDescription.hidden = TRUE;
+        }
+        
         return NO;
     }
     return YES;
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView{
+    
+    if([self.titleField.text isEqualToString:@""]){
+        self.dottedLine.hidden = FALSE;
+    }else{
+        self.dottedLine.hidden = TRUE;
+    }
+    
+    if ([self.keypadText.text isEqualToString:@""]) {
+        self.votesBlankButton.hidden = FALSE;
+    }else{
+        self.votesBlankButton.hidden = TRUE;
+    }
+    
+    self.dottedLineDescription.hidden = TRUE;
 }
 
 - (IBAction)publishPressed:(id)sender {

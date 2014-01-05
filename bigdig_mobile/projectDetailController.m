@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Dylan Keil. All rights reserved.
 //
 
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "projectDetailController.h"
 
 @interface projectDetailController ()
@@ -27,6 +28,7 @@
 {
     [super viewDidLoad];
     self.myMap.delegate = (id)self;
+    [self.projectImage setImageWithURL:[NSURL URLWithString:@"http://brentwood.thefuntimesguide.com/images/blogs/new-brentwood-park-concord-road.jpg"] placeholderImage:[UIImage imageNamed:@"progress-bar-foreground"]];
 	// Do any additional setup after loading the view.
 }
 
