@@ -9,7 +9,7 @@
 #import "bigAppDelegate.h"
 
 @interface bigAppDelegate()
-@property (nonatomic, strong) CLLocation * lastLocation;
+
 @end
 
 

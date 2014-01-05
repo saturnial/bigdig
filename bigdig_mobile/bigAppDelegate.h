@@ -14,5 +14,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, strong) CLLocationManager *myLocationManager;
+@property (nonatomic, strong) CLLocation * lastLocation;
 
 @end

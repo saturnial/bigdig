@@ -6,14 +6,18 @@
 //  Copyright (c) 2014 Dylan Keil. All rights reserved.
 //
 
+#import <MapKit/MapKit.h>
+#import "MKMapView+ZoomLevel.h"
 #import <UIKit/UIKit.h>
 
-@interface addProjectController : UIViewController<UIImagePickerControllerDelegate>
+@interface addProjectController : UIViewController<UIImagePickerControllerDelegate,UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *projectImage;
 - (IBAction)takePhoto:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *titleField;
 @property (weak, nonatomic) IBOutlet UITextView *notesField;
 @property (weak, nonatomic) IBOutlet UIImageView *dottedLine;
 @property (weak, nonatomic) IBOutlet UIButton *votesBlankButton;
+@property (weak, nonatomic) IBOutlet MKMapView *myMap;
+@property (weak, nonatomic) IBOutlet UITextField *keypadText;
 
 @end
