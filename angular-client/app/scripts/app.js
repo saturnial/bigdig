@@ -11,18 +11,6 @@ angular.module('bigdig', [
 ])
   .config(function($locationProvider, $routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: '/views/main.html',
-        controller: 'ViewProjectsCtrl'
-      })
-      .when('/view/:projectId', {
-        templateUrl: '/views/project_detail.html',
-        controller: 'ProjectDetailsCtrl'
-      })
-      .when('/add-photo/:projectId', {
-        templateUrl: '/views/add_photo.html',
-        controller: 'AddPhotoCtrl'
-      })
       .when('/view-projects', {
         templateUrl: '/views/view_projects.html',
         controller: 'ViewProjectsCtrl'
@@ -30,6 +18,18 @@ angular.module('bigdig', [
       .when('/add-project', {
         templateUrl: '/views/add_project.html',
         controller: 'AddProjectCtrl'
+      })
+      .when('/add-photo/:projectId', {
+        templateUrl: '/views/add_photo.html',
+        controller: 'AddPhotoCtrl'
+      })
+      .when('/add-location/:projectId', {
+        templateUrl: '/views/add_location.html',
+        controller: 'AddLocationCtrl'
+      })
+      .when('/view/:projectId', {
+        templateUrl: '/views/project_detail.html',
+        controller: 'ProjectDetailsCtrl'
       })
       .when('/', {
         templateUrl: '/views/main.html',

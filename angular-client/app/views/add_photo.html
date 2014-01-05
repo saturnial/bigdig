@@ -2,12 +2,42 @@
   <h2>Add photos to your project</h2>
 </div>
 
-    <div ng-controller="uploadFileCtrl">
-      <input type="text" ng-model="project">
-      <input type="file" ng-file-select="onFileSelect($files)" >
-      <input type="file" ng-file-select="onFileSelect($files)" multiple>
-      <div class="drop-box" ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="dragover" ng-show="dropSupported">drop files here
+<div ng-controller="AddPhotoCtrl">
+  <input type="file" ng-file-select="onFileSelect($files)" >
+  <!-- <input type="file" ng-file-select="onFileSelect($files)" multiple> -->
+  <div class="drop-box" ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="dragover">drop files here</div>
+  <button type="button" ng-click="upload.abort()" class="btn btn-primary">Upload</button>
+  <button type="button" ng-click="upload.abort()" class="btn btn-danger">Abort</button>
+</div>
+
+<div>
+  <h2>Progress</h2>
+</div>
+
+    <div ng-show="selectedFiles != null">
+      <div class="sel-file" ng-repeat="f in selectedFiles">
+        <img ng-show="dataUrls[$index]" ng-src="{{dataUrls[$index]}}">
+        <button class="button" ng-click="start($index)" ng-show="progress[$index] < 0">Start</button>
+        <span class="progress" ng-show="progress[$index] >= 0">
+          <div style="width:{{progress[$index]}}%">{{progress[$index]}}%</div>
+        </span>
+        <button class="button" ng-click="abort($index)" ng-show="hasUploader($index) && progress[$index] < 100">Abort</button>
+        {{f.name}} - size: {{f.size}}B - type: {{f.type}}
       </div>
-      <div ng-file-drop-available="dropSupported=true" ng-show="!dropSupported">HTML5 Drop File is not supported!</div>
-      <button type="button" ng-click="upload.abort()" class="btn btn-danger">Cancel Upload</button>
     </div>
+    <div class="response" ng-show="uploadResult.length > 0">
+      Server Response:
+      <ul>
+        <li ng-repeat="result in uploadResult">
+          <ul>
+            <li ng-repeat="item in result">
+              <div data-ng-show="item.name">file name: {{item.name}}</div>
+              <div data-ng-show="item.fieldName">name: {{item.fieldName}}</div>
+              <div data-ng-show="item.size">size on the serve: {{item.size}}</div>
+              <div data-ng-show="item.value">value: {{item.value}}</div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>

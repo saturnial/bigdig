@@ -14,6 +14,7 @@ class ProjectSerializer(serializers.HyperlinkedModelSerializer):
 #     model = models.Contribution
 
 class PhotoSerializer(serializers.HyperlinkedModelSerializer):
+
   class Meta:
     model = models.Photo
 

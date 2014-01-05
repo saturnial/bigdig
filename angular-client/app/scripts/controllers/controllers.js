@@ -77,16 +77,18 @@ angular.module('bigdig.controllers', ['angularFileUpload'])
       });
   }])
 
-  .controller('uploadFileCtrl', ['$scope', '$routeParams', '$upload', function($scope, $routeParams, $upload) {
+  .controller('AddPhotoCtrl', ['$scope', '$routeParams', '$upload', '$location', function($scope, $routeParams, $upload, $location) {
+    $scope.uploadRightAway = false;
     $scope.onFileSelect = function($files) {
     //$files: an array of files selected, each file has name, size, and type.
     for (var i = 0; i < $files.length; i++) {
       var file = $files[i];
+      $scope.progress = [];
       $scope.upload = $upload.upload({
         url: '/api/photos/', //upload.php script, node.js route, or servlet url
-        method: POST, // POST or PUT,
+        method: 'POST', // POST or PUT,
         // headers: {'headerKey': 'headerValue'}, withCredential: true,
-        data: {myObj: $scope.myModelObj},
+        data: {'project': '/api/projects/' + $routeParams.projectId + '/', 'image': file},
         file: file,
         // file: $files, //upload multiple files, this feature only works in HTML5 FromData browsers
         /* set file formData name for 'Content-Desposition' header. Default: 'file' */
@@ -97,9 +99,13 @@ angular.module('bigdig.controllers', ['angularFileUpload'])
         console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
       }).success(function(data, status, headers, config) {
         // file is uploaded successfully
-        console.log(data);
+        $location.path('/add-location/' + $routeParams.projectId + '/');
+      })
+      .error(function (data, status, headers, config) {
+          $scope.status = status + ' ' + headers;
+          console.log('FAILURE!');
+          console.log(data);
       });
-      //.error(...)
       //.then(success, error, progress); 
     }
   };

@@ -1,5 +1,5 @@
 from django.db import models
-from django_facebook.models import FacebookCustomUser
+# from django_facebook.models import FacebookCustomUser
 
 
 class Project(models.Model):
