@@ -86,6 +86,7 @@ STATICFILES_DIRS = (
 )
 
 # http://psa.matiasaguirre.net/docs/backends/facebook.html
+# http://psa.matiasaguirre.net/docs/configuration/django.html
 SOCIAL_AUTH_FACEBOOK_KEY = 1430066343890925
 SOCIAL_AUTH_FACEBOOK_SECRET = 'd593879a9a4de11dccc4075841f9ee05'
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
@@ -99,6 +100,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.tz',
     'django.core.context_processors.request',
     'django.contrib.messages.context_processors.messages',
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
 )
 
 AUTHENTICATION_BACKENDS = (
