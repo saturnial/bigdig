@@ -1,9 +1,5 @@
 from django.db import models
-
-
-class User(models.Model):
-  created_on = models.DateTimeField(auto_now_add=True)
-  modified_on = models.DateTimeField(auto_now=True)
+from django.contrib.auth.models import User
 
 
 class Project(models.Model):

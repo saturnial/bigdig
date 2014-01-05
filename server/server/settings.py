@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -39,6 +40,7 @@ INSTALLED_APPS = (
     'api',
     'rest_framework',
     'social.apps.django_app.default',
+    'server',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -105,6 +107,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 AUTHENTICATION_BACKENDS = (
-    'social.backends.facebook.OAuth2',
+    'social.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
+#SOCIAL_AUTH_USER_MODEL = 'django.contrib.auth.models.User'
