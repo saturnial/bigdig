@@ -38,7 +38,9 @@
         [myAlertView show];
         
     }
-	// Do any additional setup after loading the view.
+    
+    self.projectImage.image = [UIImage imageNamed:@"camerablank"];
+    // Do any additional setup after loading the view.
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -59,6 +61,29 @@
 }
 
 - (IBAction)takePhoto:(id)sender {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle: nil
+                                                             delegate: (id)self
+                                                    cancelButtonTitle: @"Cancel"
+                                               destructiveButtonTitle: nil
+                                                    otherButtonTitles: @"Take a new photo", @"Choose from existing", nil];
+    [actionSheet showInView:self.view];
+ }
+
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex) {
+        case 0:
+            [self takeNewPhotoFromCamera];
+            break;
+        case 1:
+            [self choosePhotoFromExistingImages];
+        default:
+            break;
+    }
+}
+
+-(void)takeNewPhotoFromCamera{
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = (id)self;
     picker.allowsEditing = YES;
@@ -67,7 +92,7 @@
     [self presentViewController:picker animated:YES completion:NULL];
 }
 
-- (IBAction)selectPhoto:(id)sender {
+-(void)choosePhotoFromExistingImages{
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = (id)self;
     picker.allowsEditing = YES;
@@ -75,6 +100,7 @@
     
     [self presentViewController:picker animated:YES completion:NULL];
 }
+
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
@@ -91,8 +117,55 @@
     
 }
 
+
+- (IBAction)didEndOnExit:(id)sender {
+    if(![self.titleField.text isEqualToString:@""]){
+        self.dottedLine.hidden = TRUE;
+    }else{
+        self.dottedLine.hidden = FALSE;
+    }
+    [self.titleField resignFirstResponder];
+}
+
 - (IBAction)cancelPressed:(id)sender {
     [self dismissViewControllerAnimated:TRUE completion:nil];
 }
+
+
+
+- (BOOL) textView: (UITextView*) textView
+shouldChangeTextInRange: (NSRange) range
+  replacementText: (NSString*) text
+{
+    if ([text isEqualToString:@"\n"]) {
+        
+        [self publishPressed:self];
+        
+        [textView resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}
+
+- (IBAction)publishPressed:(id)sender {
+}
+
+
+/*
+- (BOOL) textView: (UITextView*) textView
+shouldChangeTextInRange: (NSRange) range
+  replacementText: (NSString*) text
+{
+    if ([text isEqualToString:@"\n"]) {
+        
+        projectCell * selectedCell = [[[textView superview] superview] superview];
+        
+        [projectCell submitPressed:self];
+        
+        [textView resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}*/
 
 @end

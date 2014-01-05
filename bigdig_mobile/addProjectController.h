@@ -11,6 +11,9 @@
 @interface addProjectController : UIViewController<UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *projectImage;
 - (IBAction)takePhoto:(id)sender;
-- (IBAction)selectPhoto:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *titleField;
+@property (weak, nonatomic) IBOutlet UITextView *notesField;
+@property (weak, nonatomic) IBOutlet UIImageView *dottedLine;
+@property (weak, nonatomic) IBOutlet UIButton *votesBlankButton;
 
 @end

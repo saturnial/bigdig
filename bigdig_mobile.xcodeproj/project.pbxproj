@@ -42,6 +42,10 @@
 		A2EC093D1878D60A0032B659 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2EC09391878D60A0032B659 /* logo@2x.png */; };
 		A2EC093E1878D60A0032B659 /* publish@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2EC093A1878D60A0032B659 /* publish@2x.png */; };
 		A2EC093F1878D60A0032B659 /* vote@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2EC093B1878D60A0032B659 /* vote@2x.png */; };
+		A2EC09431878E5600032B659 /* camerablank@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2EC09401878E5600032B659 /* camerablank@2x.png */; };
+		A2EC09441878E5600032B659 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2EC09411878E5600032B659 /* arrow@2x.png */; };
+		A2EC09451878E5600032B659 /* requiredVotesSlot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2EC09421878E5600032B659 /* requiredVotesSlot@2x.png */; };
+		A2EC09471878EA8E0032B659 /* dottedline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2EC09461878EA8E0032B659 /* dottedline@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +105,10 @@
 		A2EC09391878D60A0032B659 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		A2EC093A1878D60A0032B659 /* publish@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "publish@2x.png"; sourceTree = "<group>"; };
 		A2EC093B1878D60A0032B659 /* vote@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vote@2x.png"; sourceTree = "<group>"; };
+		A2EC09401878E5600032B659 /* camerablank@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camerablank@2x.png"; sourceTree = "<group>"; };
+		A2EC09411878E5600032B659 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
+		A2EC09421878E5600032B659 /* requiredVotesSlot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "requiredVotesSlot@2x.png"; sourceTree = "<group>"; };
+		A2EC09461878EA8E0032B659 /* dottedline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dottedline@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +237,10 @@
 		A2E78564187896A400AE25BB /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				A2EC09461878EA8E0032B659 /* dottedline@2x.png */,
+				A2EC09401878E5600032B659 /* camerablank@2x.png */,
+				A2EC09411878E5600032B659 /* arrow@2x.png */,
+				A2EC09421878E5600032B659 /* requiredVotesSlot@2x.png */,
 				A2EC092D1878C0530032B659 /* progress-bar-foreground.png */,
 				A2EC09381878D60A0032B659 /* add@2x.png */,
 				A2EC09391878D60A0032B659 /* logo@2x.png */,
@@ -319,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2E785481878954800AE25BB /* Images.xcassets in Resources */,
+				A2EC09451878E5600032B659 /* requiredVotesSlot@2x.png in Resources */,
 				A2EC09311878C0530032B659 /* progress-bar-foreground.png in Resources */,
 				A2EC093F1878D60A0032B659 /* vote@2x.png in Resources */,
 				A2EC093C1878D60A0032B659 /* add@2x.png in Resources */,
@@ -327,9 +340,12 @@
 				A2EC093E1878D60A0032B659 /* publish@2x.png in Resources */,
 				A2EC093D1878D60A0032B659 /* logo@2x.png in Resources */,
 				A2EC09331878C0530032B659 /* progress-bar-background.png in Resources */,
+				A2EC09471878EA8E0032B659 /* dottedline@2x.png in Resources */,
 				A2EC09361878C60A0032B659 /* projectCell.xib in Resources */,
+				A2EC09441878E5600032B659 /* arrow@2x.png in Resources */,
 				A2EC09341878C0530032B659 /* progress-bar-foreground@2x.png in Resources */,
 				A2E785401878954800AE25BB /* Main.storyboard in Resources */,
+				A2EC09431878E5600032B659 /* camerablank@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

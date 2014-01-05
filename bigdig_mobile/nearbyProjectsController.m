@@ -61,7 +61,7 @@
             }
         }
     }
-    
+    cell.description.returnKeyType = UIReturnKeyDone;
     cell.progressBar.progress = 0.78;
     cell.title.text = @"New Parklet";
     cell.location.text = @"21 & Harrison";
