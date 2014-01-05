@@ -38,6 +38,10 @@
 		A2EC09331878C0530032B659 /* progress-bar-background.png in Resources */ = {isa = PBXBuildFile; fileRef = A2EC092F1878C0530032B659 /* progress-bar-background.png */; };
 		A2EC09341878C0530032B659 /* progress-bar-foreground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2EC09301878C0530032B659 /* progress-bar-foreground@2x.png */; };
 		A2EC09361878C60A0032B659 /* projectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2EC09351878C60A0032B659 /* projectCell.xib */; };
+		A2EC093C1878D60A0032B659 /* add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2EC09381878D60A0032B659 /* add@2x.png */; };
+		A2EC093D1878D60A0032B659 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2EC09391878D60A0032B659 /* logo@2x.png */; };
+		A2EC093E1878D60A0032B659 /* publish@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2EC093A1878D60A0032B659 /* publish@2x.png */; };
+		A2EC093F1878D60A0032B659 /* vote@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2EC093B1878D60A0032B659 /* vote@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +97,10 @@
 		A2EC092F1878C0530032B659 /* progress-bar-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progress-bar-background.png"; sourceTree = "<group>"; };
 		A2EC09301878C0530032B659 /* progress-bar-foreground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progress-bar-foreground@2x.png"; sourceTree = "<group>"; };
 		A2EC09351878C60A0032B659 /* projectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = projectCell.xib; sourceTree = "<group>"; };
+		A2EC09381878D60A0032B659 /* add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add@2x.png"; sourceTree = "<group>"; };
+		A2EC09391878D60A0032B659 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
+		A2EC093A1878D60A0032B659 /* publish@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "publish@2x.png"; sourceTree = "<group>"; };
+		A2EC093B1878D60A0032B659 /* vote@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vote@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +230,10 @@
 			isa = PBXGroup;
 			children = (
 				A2EC092D1878C0530032B659 /* progress-bar-foreground.png */,
+				A2EC09381878D60A0032B659 /* add@2x.png */,
+				A2EC09391878D60A0032B659 /* logo@2x.png */,
+				A2EC093A1878D60A0032B659 /* publish@2x.png */,
+				A2EC093B1878D60A0032B659 /* vote@2x.png */,
 				A2EC092E1878C0530032B659 /* progress-bar-background@2x.png */,
 				A2EC092F1878C0530032B659 /* progress-bar-background.png */,
 				A2EC09301878C0530032B659 /* progress-bar-foreground@2x.png */,
@@ -308,8 +320,12 @@
 			files = (
 				A2E785481878954800AE25BB /* Images.xcassets in Resources */,
 				A2EC09311878C0530032B659 /* progress-bar-foreground.png in Resources */,
+				A2EC093F1878D60A0032B659 /* vote@2x.png in Resources */,
+				A2EC093C1878D60A0032B659 /* add@2x.png in Resources */,
 				A2EC09321878C0530032B659 /* progress-bar-background@2x.png in Resources */,
 				A2E785371878954800AE25BB /* InfoPlist.strings in Resources */,
+				A2EC093E1878D60A0032B659 /* publish@2x.png in Resources */,
+				A2EC093D1878D60A0032B659 /* logo@2x.png in Resources */,
 				A2EC09331878C0530032B659 /* progress-bar-background.png in Resources */,
 				A2EC09361878C60A0032B659 /* projectCell.xib in Resources */,
 				A2EC09341878C0530032B659 /* progress-bar-foreground@2x.png in Resources */,

@@ -14,7 +14,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vAs-6K-Iw3">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                        <rect key="frame" x="7" y="0.0" width="306" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="New Parklet" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wOG-Vg-4OV">
@@ -25,7 +25,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="21 &amp; Harrison" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EEJ-Ds-2Ii">
-                        <rect key="frame" x="15" y="123" width="297" height="21"/>
+                        <rect key="frame" x="14" y="123" width="297" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -39,11 +39,17 @@
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="15 of 20 Votes " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgy-BI-N7t">
-                        <rect key="frame" x="102" y="202" width="114" height="21"/>
+                        <rect key="frame" x="102" y="198" width="114" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="yM7-Ir-zpr">
+                        <rect key="frame" x="13.5" y="192" width="297" height="2"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="progressTintColor" red="0.40392156862745099" green="0.85490196078431369" blue="0.44313725490196076" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="trackTintColor" red="0.87200730846774188" green="0.87380292338709675" blue="0.89409022177419339" alpha="1" colorSpace="calibratedRGB"/>
+                    </progressView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="EEJ-Ds-2Ii" firstAttribute="leading" secondItem="wOG-Vg-4OV" secondAttribute="leading" id="ln7-fv-C8k"/>
@@ -52,6 +58,7 @@
             <connections>
                 <outlet property="description" destination="qLg-tS-d9s" id="Fwd-NE-hXh"/>
                 <outlet property="location" destination="EEJ-Ds-2Ii" id="ygH-gj-hmP"/>
+                <outlet property="progressBar" destination="yM7-Ir-zpr" id="nHU-6J-8YY"/>
                 <outlet property="projectImage" destination="vAs-6K-Iw3" id="hi5-cA-DVs"/>
                 <outlet property="title" destination="wOG-Vg-4OV" id="qdY-qz-ryL"/>
                 <outlet property="voteCount" destination="wgy-BI-N7t" id="afI-VH-ESy"/>

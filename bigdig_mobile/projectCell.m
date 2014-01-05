@@ -37,9 +37,12 @@
 
 
 -(void)addProgressBar{
-    self.progressBarView = [[MCProgressBarView alloc]  initWithFrame:CGRectMake(20, 180, 280, 16)
+    NSLog(@"add progress bar");
+    self.progressBarView = [[MCProgressBarView alloc]  initWithFrame:CGRectMake(20, 180, 280, 8)
                                                      backgroundImage:[[UIImage imageNamed:@"progress-bar-background"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 3, 0, 3)]
                                                      foregroundImage:[[UIImage imageNamed:@"progress-bar-foreground"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 3, 0, 3)]];
+    [self addSubview:self.progressBarView];
+    [self bringSubviewToFront:self.progressBarView];
 }
 
 -(void)setProgress:(float)progress{
