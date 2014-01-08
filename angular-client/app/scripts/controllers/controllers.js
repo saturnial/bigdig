@@ -50,11 +50,44 @@ angular.module('bigdig.controllers', ['angularFileUpload'])
     });
     };
   }])
+  .controller('ViewProjectsCtrl', ['$rootScope', '$scope', 'ProjectData', 'Facebook', function($rootScope, $scope, ProjectData, Facebook) {
+    $scope.info = {};
 
-  .controller('ViewProjectsCtrl', ['$scope', 'ProjectData', function($scope, ProjectData) {
+    $rootScope.$on("fb_statusChange", function (event, args) {
+        $rootScope.fb_status = args.status;
+        $rootScope.$apply();
+    });
+    $rootScope.$on("fb_get_login_status", function() {
+        Facebook.getLoginStatus();
+    });
+    $rootScope.$on("fb_login_failed", function() {
+        console.log("fb_login_failed");
+    });
+    $rootScope.$on("fb_logout_succeded", function() {
+        console.log("fb_logout_succeded");
+        $rootScope.id = "";
+    });
+    $rootScope.$on("fb_logout_failed", function() {
+        console.log("fb_logout_failed!");
+    });
+
       ProjectData.getProjects(function(data) {
         $scope.projects = data;
       });
+       $scope.login = function() {
+        Facebook.login();
+       };
+
+      $scope.getLoginStatus = function() {
+        alert(Facebook.getLoginStatus());
+      };
+
+      $scope.sayMyName = function() {
+          FB.api('/me', function(response) {
+            alert(response.name);       
+        });
+      };      
+
   }])
 
   .controller('ProjectDetailsCtrl', ['$scope', '$routeParams', 'ProjectData', 'GoogleMaps', function($scope,

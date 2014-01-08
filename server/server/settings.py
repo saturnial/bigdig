@@ -39,7 +39,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'api',
     'rest_framework',
-    # 'django_facebook',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -87,34 +86,37 @@ STATICFILES_DIRS = (
 )
 
 # REST framework integration
+REST_FRAMEWORK = {
+    # Use hyperlinked styles by default.
+    # Only used if the `serializer_class` attribute is not set on a view.
+    'DEFAULT_MODEL_SERIALIZER_CLASS':
+        'rest_framework.serializers.HyperlinkedModelSerializer',
 
-# REST_FRAMEWORK = {
-#     'PAGINATE_BY': 10,
-#     'DEFAULT_AUTHENTICATION_CLASSES': (
-#         'rest_framework.authentication.BasicAuthentication',
-#         'rest_framework.authentication.SessionAuthentication',
-#     )
-# }
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
 
 # Facebook integration
+FACEBOOK_APP_ID = 1430066343890925
+FACEBOOK_APP_SECRET = 'd593879a9a4de11dccc4075841f9ee05'
+# AUTH_USER_MODEL = 'server.user.MyUser'
 
-# FACEBOOK_APP_ID = 1430066343890925
-# FACEBOOK_APP_SECRET = 'd593879a9a4de11dccc4075841f9ee05'
-# AUTH_USER_MODEL = 'django_facebook.FacebookCustomUser'
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.core.context_processors.request',
+    'django.contrib.messages.context_processors.messages',
+    'django_facebook.context_processors.facebook',
+)
 
-# TEMPLATE_CONTEXT_PROCESSORS = (
-#     'django.contrib.auth.context_processors.auth',
-#     'django.core.context_processors.debug',
-#     'django.core.context_processors.i18n',
-#     'django.core.context_processors.media',
-#     'django.core.context_processors.static',
-#     'django.core.context_processors.tz',
-#     'django.core.context_processors.request',
-#     'django.contrib.messages.context_processors.messages',
-#     'django_facebook.context_processors.facebook',
-# )
-
-# AUTHENTICATION_BACKENDS = (
-#     'django_facebook.auth_backends.FacebookBackend',
-#     'django.contrib.auth.backends.ModelBackend',
-# )
+AUTHENTICATION_BACKENDS = (
+    'django_facebook.auth_backends.FacebookBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)

@@ -40,7 +40,31 @@ angular.module('bigdig', [
       });
     // $locationProvider.html5Mode(true).hashPrefix('#');
   })
-  .run(function run($http, $cookies) {
-      // For CSRF token compatibility with the Django server
-      $http.defaults.headers.post['X-CSRFToken'] = $cookies['csrftoken'];
+  .run(function run($http, $cookies, $rootScope) {
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId: '1430066343890925',
+        status:true,
+        cookie:true,
+        xfbml:true,
+      });
+
+      FB.Event.subscribe('auth.statusChange', function(response) {
+        $rootScope.$broadcast('fb_statusChange', {'status': response.status});
+      });
+    }; 
+
+    (function(d) {
+      var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+      if (d.getElementById(id)) {
+        return;
+      }
+      js = d.createElement('script');
+      js.id = id;
+      js.async = true;
+      js.src = '//connect.facebook.net/en_US/all.js';
+      ref.parentNode.insertBefore(js, ref);
+     }(document));
+      
+// For CSRF token compatibility with the Django server $http.defaults.headers.post['X-CSRFToken'] = $cookies['csrftoken'];
   });

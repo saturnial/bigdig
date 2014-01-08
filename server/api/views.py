@@ -1,11 +1,20 @@
 import models
 from api import serializers
 from rest_framework import viewsets
+from django.contrib.auth.models import User, Group
+
+# ViewSets define the view behavior.
+class UserViewSet(viewsets.ModelViewSet):
+  queryset = User.objects.all()
+  serializer_class = serializers.UserSerializer
 
 
 class ProjectViewSet(viewsets.ModelViewSet):
   queryset = models.Project.objects.all()
   serializer_class = serializers.ProjectSerializer
+
+  def pre_save(self, obj):
+    obj.creator = self.request.user
 
 
 # class ContributionViewSet(viewsets.ModelViewSet):

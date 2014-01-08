@@ -1,5 +1,4 @@
 from django.db import models
-# from django_facebook.models import FacebookCustomUser
 
 
 class Project(models.Model):
@@ -9,12 +8,14 @@ class Project(models.Model):
   amount_raised = models.IntegerField(default=0)
   created_on = models.DateTimeField(auto_now_add=True)
   modified_on = models.DateTimeField(auto_now=True)
-  latitude = models.FloatField(null=True, blank=True)
-  longitude = models.FloatField(null=True, blank=True)
-  # creator = models.ForeignKey(FacebookCustomUser)
+  latitude = models.FloatField()
+  longitude = models.FloatField()
+  creator = models.ForeignKey('auth.User', related_name='projects')
+  # image = models.ImageField(blank=True, null=True)
 
   # def __unicode__(self):
   #   return self.title + ' -- created by ' + self.creator.username
+
 
 class Photo(models.Model):
   project = models.ForeignKey(Project, related_name='photos')
