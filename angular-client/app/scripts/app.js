@@ -10,16 +10,7 @@ angular.module('bigdig', [
   'bigdig.services'
 ])
   .config(function($locationProvider, $routeProvider) {
-    $locationProvider.html5Mode(true).hashPrefix('#');
     $routeProvider
-      .when('/', {
-        templateUrl: '/views/main.html',
-        controller: 'ViewProjectsCtrl'
-      })
-       .when('/view/:projectId', {
-        templateUrl: '/views/project_detail.html',
-        controller: 'ProjectDetailsCtrl'
-      })
       .when('/view-projects', {
         templateUrl: '/views/view_projects.html',
         controller: 'ViewProjectsCtrl'
@@ -28,9 +19,26 @@ angular.module('bigdig', [
         templateUrl: '/views/add_project.html',
         controller: 'AddProjectCtrl'
       })
+      .when('/add-photo/:projectId', {
+        templateUrl: '/views/add_photo.html',
+        controller: 'AddPhotoCtrl'
+      })
+      .when('/add-location/:projectId', {
+        templateUrl: '/views/add_location.html',
+        controller: 'AddLocationCtrl'
+      })
+      .when('/view/:projectId', {
+        templateUrl: '/views/project_detail.html',
+        controller: 'ProjectDetailsCtrl'
+      })
+      .when('/', {
+        templateUrl: '/views/main.html',
+        controller: 'ViewProjectsCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
+    // $locationProvider.html5Mode(true).hashPrefix('#');
   })
   .run(function run($http, $cookies) {
       // For CSRF token compatibility with the Django server

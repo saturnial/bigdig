@@ -18,6 +18,8 @@
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    <!-- TODO (jmylen): figure out if we need to specify a base URL -->
+    <!-- <base href="/"> --> 
   </head>
   <body ng-app="bigdig">
     <!--[if lt IE 7]>
@@ -29,8 +31,8 @@
       <div class="header">
         <ul class="nav nav-pills pull-right">
           <li class="active"><a ng-href="/">Home</a></li>
-          <li><a ng-href="/view-projects">View Projects</a></li>
-          <li><a ng-href="/add-project">Add Project</a></li>
+          <li><a ng-href="/#/view-projects">View Projects</a></li>
+          <li><a ng-href="/#/add-project">Add Project</a></li>
         </ul>
         <h3>The Big Dig</h3>
       </div>
@@ -71,23 +73,7 @@
         <script src="scripts/controllers/controllers.js"></script>
         <script src="scripts/services/services.js"></script>
         <!-- endbuild -->
-
-        <!-- TODO(jmylen): figure out where maps JS should go -->
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATSyI7iJeU9RprbmcXvotWPMS97az0IHU&sensor=false"></script>
-        <script type="text/javascript">
-      var geocoder;
-      var map;
-      function initialize() {
-        geocoder = new google.maps.Geocoder();
-        var mapOptions = {
-          center: new google.maps.LatLng(37.7833, -122.4167),
-          zoom: 6 
-        };
-        map = new google.maps.Map(document.getElementById("map-canvas"),
-            mapOptions);
-      }
-    </script>
-    <!-- endTODO -->
 
 </body>
 </html>

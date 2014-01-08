@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -38,7 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'api',
     'rest_framework',
-    'django_facebook',
+    # 'django_facebook',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -97,23 +98,23 @@ STATICFILES_DIRS = (
 
 # Facebook integration
 
-FACEBOOK_APP_ID = 1430066343890925
-FACEBOOK_APP_SECRET = 'd593879a9a4de11dccc4075841f9ee05'
-AUTH_USER_MODEL = 'django_facebook.FacebookCustomUser'
+# FACEBOOK_APP_ID = 1430066343890925
+# FACEBOOK_APP_SECRET = 'd593879a9a4de11dccc4075841f9ee05'
+# AUTH_USER_MODEL = 'django_facebook.FacebookCustomUser'
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.contrib.auth.context_processors.auth',
-    'django.core.context_processors.debug',
-    'django.core.context_processors.i18n',
-    'django.core.context_processors.media',
-    'django.core.context_processors.static',
-    'django.core.context_processors.tz',
-    'django.core.context_processors.request',
-    'django.contrib.messages.context_processors.messages',
-    'django_facebook.context_processors.facebook',
-)
+# TEMPLATE_CONTEXT_PROCESSORS = (
+#     'django.contrib.auth.context_processors.auth',
+#     'django.core.context_processors.debug',
+#     'django.core.context_processors.i18n',
+#     'django.core.context_processors.media',
+#     'django.core.context_processors.static',
+#     'django.core.context_processors.tz',
+#     'django.core.context_processors.request',
+#     'django.contrib.messages.context_processors.messages',
+#     'django_facebook.context_processors.facebook',
+# )
 
-AUTHENTICATION_BACKENDS = (
-    'django_facebook.auth_backends.FacebookBackend',
-    'django.contrib.auth.backends.ModelBackend',
-)
+# AUTHENTICATION_BACKENDS = (
+#     'django_facebook.auth_backends.FacebookBackend',
+#     'django.contrib.auth.backends.ModelBackend',
+# )

@@ -1,6 +1,6 @@
 <h2>{{project.title}}</h2>
-<p>{{project.description}}</p>
-<p>Funding Goal: {{project.funding_goal}}</p>
-Map Details TODO(jmylen): Display coordinates on the map
-Latitude: {{project.latitude}} Longitude:{{ project.longitude}}
+<p class="lead">{{project.description}}</p>
+<p>Funding Goal: {{project.funding_goal | currency}}</p>
+<p>Location: {{ project.location }}</p>
+<div class="project-map"></div>
 
