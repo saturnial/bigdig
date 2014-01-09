@@ -7,17 +7,33 @@ angular.module('bigdig', [
   'ngSanitize',
   'ngRoute',
   'bigdig.controllers',
-  'bigdig.services'
+  'bigdig.services',
+  'bigdig.directives',
+  'bigdig.geo_service'
 ])
   .config(function($locationProvider, $routeProvider) {
     $routeProvider
       .when('/view-projects', {
         templateUrl: '/views/view_projects.html',
-        controller: 'ViewProjectsCtrl'
+        controller: 'ViewProjectsCtrl',
+        resolve: {
+          projects: function(MultiProjectLoader) {
+            return MultiProjectLoader();
+          }
+        }
       })
       .when('/add-project', {
         templateUrl: '/views/add_project.html',
         controller: 'AddProjectCtrl'
+      })
+      .when('/edit-project/:projectId', {
+        templateUrl: '/views/add_project.html',
+        controller: 'EditProjectCtrl',
+        resolve: {
+          project: function(ProjectLoader) {
+            return ProjectLoader();
+          }
+        }
       })
       .when('/add-photo/:projectId', {
         templateUrl: '/views/add_photo.html',
@@ -29,11 +45,15 @@ angular.module('bigdig', [
       })
       .when('/view/:projectId', {
         templateUrl: '/views/project_detail.html',
-        controller: 'ProjectDetailsCtrl'
+        controller: 'ProjectDetailsCtrl',
+        resolve: {
+          project: function(ProjectLoader) {
+            return ProjectLoader();
+          }
+        }
       })
       .when('/', {
         templateUrl: '/views/main.html',
-        controller: 'ViewProjectsCtrl'
       })
       .otherwise({
         redirectTo: '/'

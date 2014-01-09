@@ -5,7 +5,14 @@ from api import views
 from django.contrib import admin
 admin.autodiscover()
 
-router = routers.DefaultRouter()
+# By default, Django REST framework appends a trailing slash to every api end point.
+# Conversely, AngularJS's $resource removes said trailing slash.
+# We falsify the trailing_slash parameter to synchronize the two.
+# We also specify the following global setting in settings.py: APPEND_SLASH = False
+# See the below article for more detail:
+# http://www.masnun.com/2013/09/18/django-rest-framework-angularjs-resource-trailing-slash-problem.html
+
+router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'projects', views.ProjectViewSet)
 router.register(r'photos', views.PhotoViewSet)
 # router.register(r'users', views.UserViewSet)

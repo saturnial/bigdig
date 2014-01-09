@@ -30,12 +30,13 @@
     <div class="container">
       <div class="header">
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a ng-href="/">Home</a></li>
-          <li><a ng-href="/#/view-projects">View Projects</a></li>
-          <li><a ng-href="/#/add-project">Add Project</a></li>
+          <li class="active"><a ng-href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+          <li><a ng-href="/#/view-projects"><span class="glyphicon glyphicon-th-list"></span> View Projects</a></li>
+          <li><a ng-href="/#/add-project"><span class="glyphicon glyphicon-plus-sign"></span> Add Project</a></li>
         </ul>
         <h3>The Big Dig</h3>
       </div>
+      <div butterbar>Loading...</div>
     </div>
     <div class="container" ng-view=""></div>
 
@@ -72,6 +73,8 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/controllers.js"></script>
         <script src="scripts/services/services.js"></script>
+        <script src="scripts/services/geo_service.js"></script>
+        <script src="scripts/directives/directives.js"></script>
         <!-- endbuild -->
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATSyI7iJeU9RprbmcXvotWPMS97az0IHU&sensor=false"></script>
 
