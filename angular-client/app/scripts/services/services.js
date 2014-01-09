@@ -2,18 +2,33 @@
 
 /* Services */
 
-angular.module('bigdig.services', []).
-  factory('ProjectData', ['$http', function($http) {
-   return {
-      getProject: function(id, callback) {
-        $http.get('/api/projects/' + id).success(callback);
-      },
-      getProjects: function(callback) {
-        $http.get('/api/projects/').success(callback);
-      }
-   }
-  }]).
-  factory('GoogleMaps', ['$http', '$q', function($http, $q) {
+angular.module('bigdig.services', [])
+  .factory('Project', ['$resource', function($resource) {
+    return $resource('/api/projects/:id', {id: '@id'});
+  }])
+  .factory('ProjectLoader', ['Project', '$route', '$q', function(Project, $route, $q) {
+    return function() {
+      var delay = $q.defer();
+      Project.get({id: $route.current.params.projectId}, function(project) {
+        delay.resolve(project);
+      }, function() {
+        delay.reject('Unable to fetch project ' + $route.current.params.projectId);
+      });
+      return delay.promise;
+    };
+  }])
+  .factory('MultiProjectLoader', ['Project', '$q', function(Project, $q) {
+    return function() {
+      var delay = $q.defer();
+      Project.query(function(projects) {
+        delay.resolve(projects);
+      }, function() {
+        delay.reject('Unable to fetch projects');
+      });
+      return delay.promise;
+    };
+  }])
+  .factory('GoogleMaps', ['$http', '$q', function($http, $q) {
    var map;
    var geocoder;
    var mapService = {};

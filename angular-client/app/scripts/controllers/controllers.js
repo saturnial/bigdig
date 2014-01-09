@@ -6,9 +6,6 @@ angular.module('bigdig.controllers', ['angularFileUpload'])
 
   .controller('AddProjectCtrl', ['$scope', '$http', '$location', function($scope, $http, $location) {
     $scope.addProject = function() {
-      if (!$scope.title || !$scope.description || !$scope.funding_goal) {
-        return;
-      }
       var newProject = {title: $scope.title,
                         description: $scope.description,
                         funding_goal: $scope.funding_goal}
@@ -24,6 +21,15 @@ angular.module('bigdig.controllers', ['angularFileUpload'])
       });
     };
   }])
+
+  // .controller('AddProjectCtrl', ['$scope', '$location', 'Project', function($scope, $location, Project) {
+  //   $scope.project = new Project({});
+  //   $scope.addProject = function() {
+  //     $scope.project.$save(function(project) {
+  //       $location.path('/add-photo/' + project.id);
+  //     });
+  //   };
+  // }])
 
   .controller('AddLocationCtrl', ['$scope', '$http', '$location', '$routeParams', 'GoogleMaps', function($scope, $http, $location, $routeParams, GoogleMaps) {
     var mapOptions = {
@@ -51,30 +57,26 @@ angular.module('bigdig.controllers', ['angularFileUpload'])
     };
   }])
 
-  .controller('ViewProjectsCtrl', ['$scope', 'ProjectData', function($scope, ProjectData) {
-      ProjectData.getProjects(function(data) {
-        $scope.projects = data;
-      });
+  .controller('ViewProjectsCtrl', ['$scope', 'projects', function($scope, projects) {
+      $scope.projects = projects;
   }])
 
-  .controller('ProjectDetailsCtrl', ['$scope', '$routeParams', 'ProjectData', 'GoogleMaps', function($scope,
-      $routeParams, ProjectData, GoogleMaps) {
-    
-      ProjectData.getProject($routeParams.projectId, function(projectData) {
-        $scope.project = projectData;
-        var latitude = $scope.project.latitude;
-        var longitude = $scope.project.longitude;
+  .controller('ProjectDetailsCtrl', ['$scope', 'GoogleMaps', 'project', function($scope, GoogleMaps, project) {
+      $scope.project = project;
+      if (project.latitude && project.latitude) {
+        var latitude = project.latitude;
+        var longitude = project.longitude;
         var mapOptions = {
-            center: new google.maps.LatLng(latitude, longitude),
-            zoom: 18};
-        GoogleMaps.initializeMap(document.getElementById("project-details-map"),
-            mapOptions);
+          center: new google.maps.LatLng(latitude, longitude),
+          zoom: 18
+        }
+        GoogleMaps.initializeMap(document.getElementById("project-map"), mapOptions);
         GoogleMaps.addMarker(latitude, longitude);
         var locationPromise = GoogleMaps.reverseGeoCode(latitude, longitude);
         locationPromise.then(function(locationResults) {
           $scope.project.location = locationResults[3].formatted_address;
-        } )
-      });
+        });
+      }
   }])
 
   .controller('AddPhotoCtrl', ['$scope', '$routeParams', '$upload', '$location', function($scope, $routeParams, $upload, $location) {
