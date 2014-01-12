@@ -8,7 +8,8 @@ angular.module('bigdig', [
   'ngRoute',
   'bigdig.controllers',
   'bigdig.services',
-  'bigdig.directives'
+  'bigdig.directives',
+  'bigdig.geo_service'
 ])
   .config(function($locationProvider, $routeProvider) {
     $routeProvider
@@ -24,6 +25,15 @@ angular.module('bigdig', [
       .when('/add-project', {
         templateUrl: '/views/add_project.html',
         controller: 'AddProjectCtrl'
+      })
+      .when('/edit-project/:projectId', {
+        templateUrl: '/views/add_project.html',
+        controller: 'EditProjectCtrl',
+        resolve: {
+          project: function(ProjectLoader) {
+            return ProjectLoader();
+          }
+        }
       })
       .when('/add-photo/:projectId', {
         templateUrl: '/views/add_photo.html',
@@ -43,7 +53,7 @@ angular.module('bigdig', [
         }
       })
       .when('/', {
-        templateUrl: '/views/main.html'
+        templateUrl: '/views/main.html',
       })
       .otherwise({
         redirectTo: '/'

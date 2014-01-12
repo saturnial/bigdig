@@ -1,6 +1,13 @@
 <h2>{{project.title}}</h2>
 <p class="lead">{{project.description}}</p>
 <p>Funding Goal: {{project.funding_goal | currency}}</p>
-<p>Location: {{ project.location }}</p>
-<div class="project-map"></div>
+<button class="btn btn-primary" ng-click="edit()"><span class="glyphicon glyphicon-edit"></span> Edit</button>
+<button class="btn btn-danger" ng-click="remove()"><span class="glyphicon glyphicon-minus-sign"></span> Delete</button>
+
+<div ng-show="project.hasLocation" class="ng-hide">
+  <p>Location: {{ project.location }}</p>
+  <div class="project-map"></div>
+</div>
+
+
 
