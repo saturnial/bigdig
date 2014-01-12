@@ -3,30 +3,35 @@
   <h2 ng-show="project.id" class="ng-hide">Edit your project</h2>
 </div>
 <div>
-  <form ng-submit="save()" class="form-horizontal" role="form" name="projectForm">
-    <div class="form-group">
+  <form ng-submit="save()" class="form-horizontal" role="form" name="projectForm" novalidate>
+    <fieldset>
+    <div class="form-group" ng-class="{ 'has-error' : projectForm.title.$invalid && !projectForm.title.$pristine }">
       <label for="title" class="col-sm-2 control-label input-lg">Title</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control input-lg" name="title" placeholder="Title" ng-model="project.title" ng-minlength="5" required focus/>
-        <span class="error text-danger" ng-show="projectForm.title.$error.minlength">Too short!</span>
+        <input type="text" class="form-control input-lg" name="title" placeholder="Title" ng-model="project.title" required focus autocomplete="off"/>
+        <p ng-show="projectForm.title.$invalid && !projectForm.title.$pristine" class="help-block">A title is required.</p>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-class="{ 'has-error' : projectForm.description.$invalid && !projectForm.description.$pristine }">
       <label for="description" class="col-sm-2 control-label">Description</label>
       <div class="col-sm-10">
         <textarea name="description" placeholder="Please describe your project in detail" class="form-control" rows="8" ng-model="project.description" required></textarea>
+        <p ng-show="projectForm.description.$invalid && !projectForm.description.$pristine" class="help-block">A description is required.</p>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-class="{ 'has-error' : projectForm.funding_goal.$invalid && !projectForm.funding_goal.$pristine }">
       <label for="funding_goal" class="col-sm-2 control-label">Funding goal</label>
       <div class="col-sm-10">
-        <input type="number" name="funding_goal" class="form-control" id="funding_goal" placeholder="Funding goal (in $USD)" required ng-model="project.funding_goal"/>
+        <input type="number" name="funding_goal" class="form-control" id="funding_goal" placeholder="Funding goal (in $USD)" required ng-model="project.funding_goal" autocomplete="off"/>
+        <p ng-show="projectForm.funding_goal.$invalid && !projectForm.funding_goal.$pristine" class="help-block">You must specify a funding goal that is a valid number.</p>
       </div>
     </div>
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-primary" ng-disabled="projectForm.$invalid">Create Project</button>
+        <button type="submit" class="btn btn-primary" ng-disabled="projectForm.$invalid" ng-show="!project.id" class="ng-hide">Create Project</button>
+        <button type="submit" class="btn btn-primary" ng-disabled="projectForm.$invalid || projectForm.$pristine" ng-show="project.id" class="ng-hide">Edit Project</button>
       </div>
     </div>
+  </fieldset>
   </form>
 </div>
