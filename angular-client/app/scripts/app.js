@@ -23,12 +23,17 @@ angular.module('bigdig', [
         }
       })
       .when('/add-project', {
-        templateUrl: '/views/add_project.html',
-        controller: 'AddProjectCtrl'
+        templateUrl: '/views/project_form.html',
+        controller: 'ProjectCtrl',
+        resolve: {
+          project: function(Project) {
+            return new Project();
+          }
+        }
       })
       .when('/edit-project/:projectId', {
-        templateUrl: '/views/add_project.html',
-        controller: 'EditProjectCtrl',
+        templateUrl: '/views/project_form.html',
+        controller: 'ProjectCtrl',
         resolve: {
           project: function(ProjectLoader) {
             return ProjectLoader();

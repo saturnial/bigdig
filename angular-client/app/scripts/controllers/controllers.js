@@ -4,29 +4,26 @@
 
 angular.module('bigdig.controllers', ['angularFileUpload'])
 
-  .controller('AddProjectCtrl', ['$scope', '$location', 'Project',
-              function($scope, $location, Project) {
-    $scope.project = new Project();
-    $scope.save = function() {
-      console.log($scope.project);
-      $scope.project.$save(function(project) {
-        $location.path('/add-photo/' + project.id);
-      });
-    };
+  .controller('ProjectCtrl', ['$scope', '$location', 'project',
+              function($scope, $location, project) {
+    $scope.project = project;
+    if (project.id) {
+      $scope.save = function() {
+        $scope.project.$update(function(project) {
+          $location.path('/view/' + project.id);
+        });
+      };
+    } else {
+      $scope.save = function() {
+        $scope.project.$save(function(project) {
+          $location.path('/add-photo/' + project.id);
+        });
+      };
+    }
   }])
 
   .controller('ViewProjectsCtrl', ['$scope', 'projects', function($scope, projects) {
       $scope.projects = projects;
-  }])
-
-  .controller('EditProjectCtrl', ['$scope', '$location', 'project',
-              function($scope, $location, project) {
-    $scope.project = project;
-    $scope.save = function() {
-      $scope.project.$update(function(project) {
-        $location.path('/view/' + project.id);
-      });
-    };
   }])
 
   .controller('ProjectDetailsCtrl', ['$scope', '$location', 'GoogleMaps',
@@ -36,7 +33,7 @@ angular.module('bigdig.controllers', ['angularFileUpload'])
 
       $scope.remove = function() {
         $scope.project.$remove(function() {
-          $location.path('/');
+          $location.path('/view-projects');
         });
       };
 
